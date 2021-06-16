@@ -25,7 +25,7 @@ public class Config {
         } catch (FileNotFoundException ex) {
             LOGGER.error("Properties config file not found. " + ex.getMessage());
         } catch (IOException ex) {
-            System.err.println("Reading file error. " + ex.getMessage());
+            LOGGER.error("Reading file error. " + ex.getMessage());
         }
     }
 }
