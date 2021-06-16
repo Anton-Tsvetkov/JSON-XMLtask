@@ -1,31 +1,29 @@
 <?xml version="1.0"?>
 <DiamondFund>
-    <Gem id="gem101">
-        <name>gem1</name>
-        <preciousness>precious</preciousness>
-        <origin>some origin place</origin>
-        <visualParams>
-            <param1>some param</param1>
-            <param2>other param</param2>
-            <param3>one more param</param3>
-        </visualParams>
+    <Gem>
+        <VisualParams>one more param</VisualParams>
+        <VisualParams>some param</VisualParams>
+        <VisualParams>other param</VisualParams>
         <color>green</color>
-        <transparency>70</transparency>
+        <id>g001</id>
+        <name>gem1</name>
         <numberOfFaces>9</numberOfFaces>
+        <origin>some origin place</origin>
+        <preciousness>precious</preciousness>
+        <transparency>70</transparency>
         <value>12.4</value>
     </Gem>
-    <Gem id="gem102">
-        <name>gem2</name>
-        <preciousness>semiprecious</preciousness>
-        <origin>some place</origin>
-        <visualParams>
-            <param1>pampam</param1>
-            <param2>param</param2>
-            <param3>i am param</param3>
-        </visualParams>
+    <Gem>
+        <VisualParams>i am param</VisualParams>
+        <VisualParams>pampam</VisualParams>
+        <VisualParams>param</VisualParams>
         <color>blue</color>
-        <transparency>45</transparency>
+        <id>g002</id>
+        <name>gem2</name>
         <numberOfFaces>6</numberOfFaces>
+        <origin>some place</origin>
+        <preciousness>semiprecious</preciousness>
+        <transparency>45</transparency>
         <value>9.8</value>
     </Gem>
 </DiamondFund>

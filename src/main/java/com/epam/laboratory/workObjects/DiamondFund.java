@@ -1,10 +1,13 @@
 package com.epam.laboratory.workObjects;
 
-import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 public class DiamondFund {
 
+    @JsonProperty("DiamondFund")
     private List<Gem> gems;
 
     public List<Gem> getGems() {

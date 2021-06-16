@@ -1,32 +1,36 @@
-{"DiamondFund": {"Gem": [
-   {
-      "visualParams": {
-         "param3": "one more param",
-         "param1": "some param",
-         "param2": "other param"
+{
+  "DiamondFund": {
+    "Gem": [
+      {
+        "VisualParams": [
+          "one more param",
+          "some param",
+          "other param"
+        ],
+        "color": "green",
+        "numberOfFaces": 9,
+        "preciousness": "precious",
+        "origin": "some origin place",
+        "transparency": 70,
+        "name": "gem1",
+        "id": "g001",
+        "value": 12.4
       },
-      "color": "green",
-      "preciousness": "precious",
-      "numberOfFaces": 9,
-      "origin": "some origin place",
-      "transparency": 70,
-      "name": "gem1",
-      "id": "gem101",
-      "value": 12.4
-   },
-   {
-      "visualParams": {
-         "param3": "i am param",
-         "param1": "pampam",
-         "param2": "param"
-      },
-      "color": "blue",
-      "preciousness": "semiprecious",
-      "numberOfFaces": 6,
-      "origin": "some place",
-      "transparency": 45,
-      "name": "gem2",
-      "id": "gem102",
-      "value": 9.8
-   }
-]}}
+      {
+        "VisualParams": [
+          "i am param",
+          "pampam",
+          "param"
+        ],
+        "color": "blue",
+        "numberOfFaces": 6,
+        "preciousness": "semiprecious",
+        "origin": "some place",
+        "transparency": 45,
+        "name": "gem2",
+        "id": "g002",
+        "value": 9.8
+      }
+    ]
+  }
+}
