@@ -1,0 +1,31 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DiamondFund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="gem" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="preciousness"/>
+              <xs:element type="xs:string" name="origin"/>
+              <xs:element name="visualParams">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="param1"/>
+                    <xs:element type="xs:string" name="param2"/>
+                    <xs:element type="xs:string" name="param3"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="color"/>
+              <xs:element type="xs:byte" name="transparency"/>
+              <xs:element type="xs:byte" name="numberOfFaces"/>
+              <xs:element type="xs:float" name="value"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="id" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

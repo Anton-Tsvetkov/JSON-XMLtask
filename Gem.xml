@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<DiamondFund>
+	<gem id = "gem101">
+		<name>gem1</name>
+		<preciousness>precious</preciousness>
+		<origin>some origin place</origin>
+		<visualParams>
+			<param1>some param</param1>
+			<param2>other param</param2>
+			<param3>one more param</param3>
+		</visualParams>
+		<color>green</color>
+		<transparency>70</transparency>
+		<numberOfFaces>9</numberOfFaces>
+		<value>12.4</value>
+	</gem>
+		<gem id = "gem102">
+		<name>gem2</name>
+		<preciousness>semiprecious</preciousness>
+		<origin>some place</origin>
+		<visualParams>
+			<param1>pampam</param1>
+			<param2>param</param2>
+			<param3>i am param</param3>
+		</visualParams>
+		<color>blue</color>
+		<transparency>45</transparency>
+		<numberOfFaces>6</numberOfFaces>
+		<value>9.8</value>
+	</gem>
+</DiamondFund>
