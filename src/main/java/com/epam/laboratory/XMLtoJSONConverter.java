@@ -24,7 +24,6 @@ public class XMLtoJSONConverter {
 
             String xml = builder.toString();
             JSONObject jsonObj = XML.toJSONObject(xml);
-            System.out.print(jsonObj);
             FileWriter fileWriter =
                     new FileWriter(PATH_TO_JSON_FILE);
 
