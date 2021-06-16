@@ -11,12 +11,8 @@ public class XMLtoJSONConverter {
     private static final Logger LOGGER = Logger.getLogger(XMLtoJSONConverter.class);
 
     private static final int INDENT_FACTOR = 3;
-    private static final String PATH_TO_XML_FILE = Config.PATH_TO_XML_FILE;
-    private static final String PATH_TO_JSON_FILE = Config.PATH_TO_JSON_FILE;
 
-
-    public static void main(String[] args) {
-        String jsonFileName = PATH_TO_JSON_FILE;
+    public void convert(String PATH_TO_XML_FILE, String PATH_TO_JSON_FILE) {
         try {
             File xmlFile = new File(PATH_TO_XML_FILE);
             InputStream inputStream = new FileInputStream(xmlFile);
@@ -30,14 +26,14 @@ public class XMLtoJSONConverter {
             JSONObject jsonObj = XML.toJSONObject(xml);
             System.out.print(jsonObj);
             FileWriter fileWriter =
-                    new FileWriter(jsonFileName);
+                    new FileWriter(PATH_TO_JSON_FILE);
 
             BufferedWriter bufferedWriter =
                     new BufferedWriter(fileWriter);
             bufferedWriter.write(jsonObj.toString(INDENT_FACTOR));
             bufferedWriter.close();
         } catch (IOException ex) {
-            LOGGER.error("Error writing to file '" + jsonFileName + "'");
+            LOGGER.error("Error writing to file '" + PATH_TO_JSON_FILE + "'");
         }
     }
 }
