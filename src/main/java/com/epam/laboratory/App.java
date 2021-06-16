@@ -1,13 +1,12 @@
 package com.epam.laboratory;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+
+    private static final String PATH_TO_XML_FILE = Config.PATH_TO_XML_FILE;
+    private static final String PATH_TO_JSON_FILE = Config.PATH_TO_JSON_FILE;
+
+    public static void main(String[] args) {
+        XMLtoJSONConverter xmLtoJSONConverter = new XMLtoJSONConverter();
+        xmLtoJSONConverter.convert(PATH_TO_XML_FILE, PATH_TO_JSON_FILE);
     }
 }
