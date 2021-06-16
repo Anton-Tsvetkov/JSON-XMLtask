@@ -1,0 +1,32 @@
+{"DiamondFund": {"gem": [
+    {
+        "visualParams": {
+            "param3": "one more param",
+            "param1": "some param",
+            "param2": "other param"
+        },
+        "color": "green",
+        "preciousness": "precious",
+        "numberOfFaces": 9,
+        "origin": "some origin place",
+        "transparency": 70,
+        "name": "gem1",
+        "id": "gem101",
+        "value": 12.4
+    },
+    {
+        "visualParams": {
+            "param3": "i am param",
+            "param1": "pampam",
+            "param2": "param"
+        },
+        "color": "blue",
+        "preciousness": "semiprecious",
+        "numberOfFaces": 6,
+        "origin": "some place",
+        "transparency": 45,
+        "name": "gem2",
+        "id": "gem102",
+        "value": 9.8
+    }
+]}}
