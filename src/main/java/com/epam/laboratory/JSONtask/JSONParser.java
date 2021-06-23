@@ -1,4 +1,4 @@
-package com.epam.laboratory;
+package com.epam.laboratory.JSONtask;
 
 import com.epam.laboratory.workObjects.DiamondFund;
 import com.epam.laboratory.workObjects.Gem;

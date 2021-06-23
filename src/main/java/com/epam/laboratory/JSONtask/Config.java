@@ -1,4 +1,4 @@
-package com.epam.laboratory;
+package com.epam.laboratory.JSONtask;
 
 import org.apache.log4j.Logger;
 
