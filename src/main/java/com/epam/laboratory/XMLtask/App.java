@@ -1,6 +1,7 @@
 package com.epam.laboratory.XMLtask;
 
 
+import com.epam.laboratory.Config;
 import com.epam.laboratory.workObjects.DiamondFund;
 import com.epam.laboratory.workObjects.Gem;
 
@@ -10,24 +11,24 @@ public class App {
     public static void main(String[] args) throws JAXBException {
 
         NodeListProcessor nodeListProcessor = new NodeListProcessor();
-        DiamondFund gems = nodeListProcessor.unMarshalingGems("Gem.xml");
+        DiamondFund diamondFund = nodeListProcessor.unMarshalingGems(Config.PATH_TO_XML_FILE);
 
         System.out.println("\nGems before sort:");
-        for (Gem gem : gems.getGems()){
+        for (Gem gem : diamondFund.getGems()){
             System.out.println(gem);
         }
 
-        gems = nodeListProcessor.sortByValue(gems);
+        diamondFund = nodeListProcessor.sortByValue(diamondFund);
 
         System.out.println("\nGems after sort:");
-        for (Gem gem : gems.getGems()){
+        for (Gem gem : diamondFund.getGems()){
             System.out.println(gem);
         }
 
 
         System.out.println("\nXML is corresponds to XSD: " +
                 Inspector.xmlCorrespondsToXsd(
-                        "Gem.xml", "Gem.xsd"));
+                        Config.PATH_TO_XML_FILE, Config.PATH_TO_XSD_FILE));
 
 
     }

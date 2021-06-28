@@ -28,68 +28,28 @@ public class NodeListProcessor {
 
         switch (parameter){
             case "NAME":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getName().compareTo(o2.getName());
-                    }
-                };
+                comparator = Comparator.comparing(Gem::getName);
                 break;
             case "PRECIOUSNESS":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getPreciousness().compareTo(o2.getPreciousness());
-                    }
-                };
+                comparator = Comparator.comparing(Gem::getPreciousness);
                 break;
             case "ORIGIN":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getOrigin().compareTo(o2.getOrigin());
-                    }
-                };
+                comparator = Comparator.comparing(Gem::getOrigin);
                 break;
             case "COLOR":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getColor().compareTo(o2.getColor());
-                    }
-                };
+                comparator = Comparator.comparing(Gem::getColor);
                 break;
             case "TRANSPARENCY":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getTransparency() - o2.getTransparency();
-                    }
-                };
+                comparator = Comparator.comparingInt(Gem::getTransparency);
                 break;
             case "NUMBER_OF_FACES":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getNumberOfFaces() - o2.getNumberOfFaces();
-                    }
-                };
+                comparator = Comparator.comparingInt(Gem::getNumberOfFaces);
                 break;
             case "VALUE":
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return (int) (o1.getValue() - o2.getValue());
-                    }
-                };
+                comparator = (o1, o2) -> (int) (o1.getValue() - o2.getValue());
                 break;
             default:
-                comparator = new Comparator<Gem>() {
-                    @Override
-                    public int compare(Gem o1, Gem o2) {
-                        return o1.getName().compareTo(o2.getName());
-                    }
-                };
+                comparator = Comparator.comparing(Gem::getName);
                 System.out.println("Parameter for sorting not found");
         }
 

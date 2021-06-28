@@ -1,4 +1,4 @@
-package com.epam.laboratory.JSONtask;
+package com.epam.laboratory;
 
 import org.apache.log4j.Logger;
 
@@ -12,6 +12,7 @@ public class Config {
 
     public static String PATH_TO_XML_FILE;
     public static String PATH_TO_JSON_FILE;
+    public static String PATH_TO_XSD_FILE;
     private static final Logger LOGGER = Logger.getLogger(Config.class);
 
     static {
@@ -21,6 +22,7 @@ public class Config {
 
             PATH_TO_XML_FILE = properties.getProperty("PATH_TO_XML_FILE");
             PATH_TO_JSON_FILE = properties.getProperty("PATH_TO_JSON_FILE");
+            PATH_TO_XSD_FILE = properties.getProperty("PATH_TO_XSD_FILE");
 
         } catch (FileNotFoundException ex) {
             LOGGER.error("Properties config file not found. " + ex.getMessage());

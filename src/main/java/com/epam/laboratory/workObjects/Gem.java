@@ -2,6 +2,8 @@ package com.epam.laboratory.workObjects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 public class Gem {
 
     @JsonProperty("VisualParams")
