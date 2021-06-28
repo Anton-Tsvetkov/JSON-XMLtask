@@ -1,5 +1,6 @@
 package com.epam.laboratory.JSONtask;
 
+import com.epam.laboratory.Config;
 import com.epam.laboratory.workObjects.DiamondFund;
 import com.epam.laboratory.workObjects.Gem;
 import com.fasterxml.jackson.databind.ObjectMapper;

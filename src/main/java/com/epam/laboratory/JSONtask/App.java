@@ -1,8 +1,6 @@
 package com.epam.laboratory.JSONtask;
 
-import com.epam.laboratory.JSONtask.Config;
-import com.epam.laboratory.JSONtask.JSONParser;
-import com.epam.laboratory.JSONtask.XMLtoJSONConverter;
+import com.epam.laboratory.Config;
 import com.epam.laboratory.workObjects.DiamondFund;
 import com.epam.laboratory.workObjects.Gem;
 
