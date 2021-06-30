@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <DiamondFund>
     <Gem>
-        <VisualParams>one more param</VisualParams>
-        <VisualParams>some param</VisualParams>
-        <VisualParams>other param</VisualParams>
         <color>green</color>
-        <id>g001</id>
+        <id>001</id>
         <name>gem1</name>
         <numberOfFaces>9</numberOfFaces>
         <origin>some origin place</origin>
@@ -14,11 +11,8 @@
         <value>12.4</value>
     </Gem>
     <Gem>
-        <VisualParams>i am param</VisualParams>
-        <VisualParams>pampam</VisualParams>
-        <VisualParams>param</VisualParams>
         <color>blue</color>
-        <id>g002</id>
+        <id>002</id>
         <name>gem2</name>
         <numberOfFaces>6</numberOfFaces>
         <origin>some place</origin>

@@ -1,23 +1,29 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="DiamondFund">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Gem" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element type="xs:string" name="VisualParams" maxOccurs="unbounded" minOccurs="0"/>
-              <xs:element type="xs:string" name="color"/>
-              <xs:element type="xs:string" name="id"/>
-              <xs:element type="xs:string" name="name"/>
-              <xs:element type="xs:byte" name="numberOfFaces"/>
-              <xs:element type="xs:string" name="origin"/>
-              <xs:element type="xs:string" name="preciousness"/>
-              <xs:element type="xs:byte" name="transparency"/>
-              <xs:element type="xs:float" name="value"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-</xs:schema>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DiamondFund">
+    <complexType>
+      <sequence>
+        <element name="Gem" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element type="string" name="color"/>
+              <element type="int" name="id"/>
+              <element type="string" name="name"/>
+              <element type="byte" name="numberOfFaces"/>
+              <element type="string" name="origin"/>
+              <element type="string" name="preciousness"/>
+              <element name="transparency">
+                <simpleType>
+                  <restriction base="byte">
+                    <minInclusive value="0"/>
+                    <maxInclusive value="100"/>
+                  </restriction>
+                </simpleType>
+              </element>
+              <element type="float" name="value"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>
