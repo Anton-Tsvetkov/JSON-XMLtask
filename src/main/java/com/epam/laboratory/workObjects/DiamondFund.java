@@ -8,6 +8,9 @@
 
 package com.epam.laboratory.workObjects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -68,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
 public class DiamondFund {
 
     @XmlElement(name = "Gem")
+    @JsonProperty("Gem")
     protected List<DiamondFund.Gem> gem;
 
     /**

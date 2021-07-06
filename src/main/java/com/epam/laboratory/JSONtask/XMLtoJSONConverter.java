@@ -13,9 +13,9 @@ public class XMLtoJSONConverter {
     private static final int INDENT_FACTOR = 3;
     private static JSONObject jsonObject;
 
-    public static JSONObject getJsonObject(String PATH_TO_XML_FILE) {
+    public static JSONObject getJsonObject(String pathToXmlFile) {
         try {
-            File xmlFile = new File(PATH_TO_XML_FILE);
+            File xmlFile = new File(pathToXmlFile);
             InputStream inputStream = new FileInputStream(xmlFile);
             StringBuilder builder = new StringBuilder();
             int ptr;
@@ -26,22 +26,26 @@ public class XMLtoJSONConverter {
             String xml = builder.toString();
             jsonObject = XML.toJSONObject(xml);
         } catch (IOException ex) {
-        LOGGER.error("Error reading from file '" + PATH_TO_XML_FILE + "'");
-    }
+            LOGGER.error("Error reading from file '" + pathToXmlFile + "'");
+        }
         return jsonObject;
     }
 
-    public void convert(String PATH_TO_XML_FILE, String PATH_TO_JSON_FILE) {
-        try {
-            FileWriter fileWriter =
-                    new FileWriter(PATH_TO_JSON_FILE);
-
-            BufferedWriter bufferedWriter =
-                    new BufferedWriter(fileWriter);
-            bufferedWriter.write(getJsonObject(PATH_TO_XML_FILE).toString(INDENT_FACTOR));
-            bufferedWriter.close();
+    public void convert(String pathToXmlFile, String pathToJsonFile) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathToJsonFile))) {
+            String jsonString = getJsonObject(pathToXmlFile).toString(INDENT_FACTOR);
+            jsonString = blackMagicCutting(jsonString);
+            bufferedWriter.write(jsonString);
         } catch (IOException ex) {
-            LOGGER.error("Error writing to file '" + PATH_TO_JSON_FILE + "'");
+            LOGGER.error("Error writing to file '" + pathToJsonFile + "'");
         }
     }
+
+
+    private String blackMagicCutting(String json) {
+        json = json.replace("{\"DiamondFund\": ", "");
+        //json = json.replace(String.valueOf(json.charAt(json.length() - 1)), "");
+        return json;
+    }
+
 }

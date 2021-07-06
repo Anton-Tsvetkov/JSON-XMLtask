@@ -13,20 +13,21 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class Parser {
 
-    class SAXParser {
+    public static class SAXParser {
 
     }
 
-    class StAXParser {
+    public static class StAXParser {
 
     }
 
-    class DOMParser {
+    public static class DOMParser {
 
         private Document document;
 
@@ -55,7 +56,7 @@ public class Parser {
     }
 
 
-    class JSONParser {
+    public static class JSONParser {
 
         private final Logger LOGGER = Logger.getLogger(XMLtoJSONConverter.class);
 
@@ -63,28 +64,16 @@ public class Parser {
         public DiamondFund getDiamondFundFromJSON() {
             DiamondFund diamondFund = null;
             try {
-                JSONObject jsonObj = new JSONObject(XMLtoJSONConverter.getJsonObject(Config.pathToXmlFile).toString());
-                ObjectMapper objectMapper = new ObjectMapper();
-                diamondFund = objectMapper.readValue(blackMagicCutting(jsonObj), DiamondFund.class);
+                ObjectMapper mapper = new ObjectMapper();
+                diamondFund = mapper.readValue(new File(Config.pathToJsonFile), DiamondFund.class);
+
             } catch (IOException ex) {
-                LOGGER.error("Error reading from file '" + Config.pathToXmlFile + "'");
+                LOGGER.error("Error reading from file '" + Config.pathToJsonFile + "'");
             }
             return diamondFund;
         }
 
-        public List<DiamondFund.Gem> getGemsFromJSON() {
-            return getDiamondFundFromJSON().getGem();
-        }
-
-
-        private String blackMagicCutting(JSONObject jsonObj) {
-            String json = jsonObj.toString();
-            json = json.replace(":{", ":");
-            json = json.replace("\"Gem\":", "");
-            return json;
-        }
 
     }
-
 
 }

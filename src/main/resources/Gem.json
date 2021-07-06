@@ -1,4 +1,4 @@
-{"DiamondFund": {"Gem": [
+{"Gem": [
    {
       "color": "green",
       "numberOfFaces": 9,
@@ -19,4 +19,4 @@
       "id": "002",
       "value": 9.8
    }
-]}}
+]}
