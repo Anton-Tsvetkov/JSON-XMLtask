@@ -11,19 +11,28 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Parser {
 
@@ -119,6 +128,80 @@ public class Parser {
 
     public static class StAXParser {
 
+        List<DiamondFund.Gem> gems = new ArrayList<>();
+        DiamondFund.Gem gem;
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+
+        public List<DiamondFund.Gem> getGems() {
+            return gems;
+        }
+
+        public void parse(String filename) {
+            try {
+                XMLEventReader reader = xmlInputFactory.createXMLEventReader(new FileInputStream(filename));
+                // идём по элементам xml файла
+                while (reader.hasNext()) {
+                    // получаем элемент и разбиваем его по атрибутам
+                    XMLEvent nextEvent = reader.nextEvent();
+                    if (nextEvent.isStartElement()) {
+                        StartElement startElement = nextEvent.asStartElement();
+                        // получаем gem's атрибуты
+                        switch (startElement.getName().getLocalPart()) {
+                            case "gem":
+                                gem = new DiamondFund.Gem();
+                                Attribute id = startElement.getAttributeByName(new QName("id"));
+                                if (id != null) {
+                                    gem.setId(Integer.parseInt(id.getValue()));
+                                }
+                                break;
+                            case "color":
+                                nextEvent = reader.nextEvent();
+                                gem.setColor(nextEvent.asCharacters().getData());
+                                break;
+                            case "name":
+                                nextEvent = reader.nextEvent();
+                                gem.setName(nextEvent.asCharacters().getData());
+                                break;
+                            case "numberOfFaces":
+                                nextEvent = reader.nextEvent();
+                                gem.setNumberOfFaces(Byte.parseByte(nextEvent.asCharacters().getData()));
+                                break;
+                            case "origin":
+                                nextEvent = reader.nextEvent();
+                                gem.setOrigin(nextEvent.asCharacters().getData());
+                                break;
+                            case "preciousness":
+                                nextEvent = reader.nextEvent();
+                                gem.setPreciousness(nextEvent.asCharacters().getData());
+                                break;
+                            case "transparency":
+                                nextEvent = reader.nextEvent();
+                                gem.setTransparency(Byte.parseByte(nextEvent.asCharacters().getData()));
+                                break;
+                            case "value":
+                                nextEvent = reader.nextEvent();
+                                gem.setValue(Float.parseFloat(nextEvent.asCharacters().getData()));
+                                break;
+                            default:
+                                System.out.println("No find \"" + startElement.getName().getLocalPart() + "\" element");
+                        }
+                        // если цикл дошел до закрывающего элемента Gem,
+                        // то добавляем считанный из файла gem в список
+
+                    }
+                    if (nextEvent.isEndElement()) {
+                        EndElement endElement = nextEvent.asEndElement();
+                        if (endElement.getName().getLocalPart().equals("gem")) {
+                            gems.add(gem);
+                        }
+                    }
+                }
+
+            } catch (FileNotFoundException | XMLStreamException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public static class DOMParser {
@@ -148,7 +231,6 @@ public class Parser {
             return document;
         }
     }
-
 
     public static class JSONParser {
 

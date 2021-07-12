@@ -1,23 +1,21 @@
 <?xml version="1.0"?>
-<DiamondFund>
-    <Gem>
+<Gems>
+    <gem id = "1">
         <color>green</color>
-        <id>1</id>
         <name>gem1</name>
         <numberOfFaces>9</numberOfFaces>
         <origin>some origin place</origin>
         <preciousness>precious</preciousness>
         <transparency>70</transparency>
         <value>12.4</value>
-    </Gem>
-    <Gem>
+    </gem>
+    <gem id = "2">
         <color>blue</color>
-        <id>2</id>
         <name>gem2</name>
         <numberOfFaces>6</numberOfFaces>
         <origin>some place</origin>
         <preciousness>semiprecious</preciousness>
         <transparency>45</transparency>
         <value>9.8</value>
-    </Gem>
-</DiamondFund>
+    </gem>
+</Gems>

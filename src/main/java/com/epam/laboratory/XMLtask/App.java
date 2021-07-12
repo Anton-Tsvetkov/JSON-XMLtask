@@ -17,6 +17,8 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws JAXBException, ParserConfigurationException, SAXException, IOException {
 
+        // CHECK sorting list of elements
+
 //        NodeListProcessor nodeListProcessor = new NodeListProcessor();
 //        DiamondFund diamondFund = nodeListProcessor.unMarshalingGems(Config.pathToXmlFile);
 //
@@ -37,17 +39,36 @@ public class App {
 //                InspectorXML.validateByXsd(
 //                        Config.pathToXmlFile, Config.pathToXsdFile));
 
+
+
+
+
+        // CHECK SAX parser
+
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
 
         Parser.SAXParser handler = new Parser.SAXParser();
         parser.parse(new File(Config.pathToXmlFile), handler);
 
-//        System.out.println(handler.getGem());
 
         for (DiamondFund.Gem gem : handler.getGems()){
             System.out.println(gem);
         }
+
+        // CHECK StAX parser
+
+//        Parser.StAXParser stAXParser = new Parser.StAXParser();
+//        stAXParser.parse(Config.pathToXmlFile);
+//
+//        for (DiamondFund.Gem gem : stAXParser.getGems()) {
+//            System.out.println(gem);
+//        }
+
+
+
+
+
 
     }
 }
