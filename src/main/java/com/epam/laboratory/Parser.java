@@ -64,6 +64,10 @@ public class Parser {
         @Override
         public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
             lastElementName = qName;
+            if (qName.equals("gem")) {
+                String idStr = atts.getValue("id");
+                id = Integer.parseInt(idStr);
+            }
         }
 
         @Override
@@ -74,9 +78,6 @@ public class Parser {
                 switch (lastElementName) {
                     case "color":
                         color = information;
-                        break;
-                    case "id":
-                        id = Integer.parseInt(information);
                         break;
                     case "name":
                         name = information;
