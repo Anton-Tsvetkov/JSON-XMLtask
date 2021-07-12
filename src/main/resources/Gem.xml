@@ -2,7 +2,7 @@
 <DiamondFund>
     <Gem>
         <color>green</color>
-        <id>001</id>
+        <id>1</id>
         <name>gem1</name>
         <numberOfFaces>9</numberOfFaces>
         <origin>some origin place</origin>
@@ -12,7 +12,7 @@
     </Gem>
     <Gem>
         <color>blue</color>
-        <id>002</id>
+        <id>2</id>
         <name>gem2</name>
         <numberOfFaces>6</numberOfFaces>
         <origin>some place</origin>

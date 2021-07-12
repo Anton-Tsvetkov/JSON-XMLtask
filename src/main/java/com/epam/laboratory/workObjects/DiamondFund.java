@@ -163,6 +163,17 @@ public class DiamondFund {
         protected byte transparency;
         protected float value;
 
+        public Gem(String color, int id, String name, byte numberOfFaces, String origin, String preciousness, byte transparency, float value) {
+            this.color = color;
+            this.id = id;
+            this.name = name;
+            this.numberOfFaces = numberOfFaces;
+            this.origin = origin;
+            this.preciousness = preciousness;
+            this.transparency = transparency;
+            this.value = value;
+        }
+
         /**
          * Gets the value of the color property.
          *
