@@ -1,29 +1,22 @@
 <schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
-  <element name="DiamondFund">
+<element name="Gems">
     <complexType>
-      <sequence>
-        <element name="Gem" maxOccurs="unbounded" minOccurs="0">
-          <complexType>
-            <sequence>
-              <element type="string" name="color"/>
-              <element type="int" name="id"/>
-              <element type="string" name="name"/>
-              <element type="byte" name="numberOfFaces"/>
-              <element type="string" name="origin"/>
-              <element type="string" name="preciousness"/>
-              <element name="transparency">
-                <simpleType>
-                  <restriction base="byte">
-                    <minInclusive value="0"/>
-                    <maxInclusive value="100"/>
-                  </restriction>
-                </simpleType>
-              </element>
-              <element type="float" name="value"/>
-            </sequence>
-          </complexType>
-        </element>
-      </sequence>
+        <sequence>
+            <element name="gem" maxOccurs="unbounded" minOccurs="0">
+                <complexType>
+                    <sequence>
+                        <element type="string" name="color"/>
+                        <element type="string" name="name"/>
+                        <element type="byte" name="numberOfFaces"/>
+                        <element type="string" name="origin"/>
+                        <element type="string" name="preciousness"/>
+                        <element type="byte" name="transparency"/>
+                        <element type="float" name="value"/>
+                    </sequence>
+                    <attribute type="byte" name="id" use="optional"/>
+                </complexType>
+            </element>
+        </sequence>
     </complexType>
-  </element>
+</element>
 </schema>
