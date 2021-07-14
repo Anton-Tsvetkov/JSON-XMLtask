@@ -37,12 +37,12 @@ import java.util.List;
 public class Parser {
 
     public static class XsltTransform {
-        public static void main(String[] args) throws IOException, URISyntaxException, TransformerException {
+        public void transform() throws TransformerException {
             TransformerFactory factory = TransformerFactory.newInstance();
-            Source xslt = new StreamSource(new File("article1a.xsl"));
+            Source xslt = new StreamSource(new File(Config.pathToXslFile));
             Transformer transformer = factory.newTransformer(xslt);
             Source xml = new StreamSource(new File(Config.pathToXmlFile));
-            transformer.transform(xml, new StreamResult(new File("output.xml")));
+            transformer.transform(xml, new StreamResult(new File(Config.pathToTransformXmlFile)));
         }
     }
 

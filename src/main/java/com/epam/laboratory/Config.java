@@ -13,6 +13,8 @@ public class Config {
     public static String pathToXmlFile;
     public static String pathToJsonFile;
     public static String pathToXsdFile;
+    public static String pathToXslFile;
+    public static String pathToTransformXmlFile;
     private static final Logger LOGGER = Logger.getLogger(Config.class);
 
     static {
@@ -23,6 +25,9 @@ public class Config {
             pathToXmlFile = properties.getProperty("PATH_TO_XML_FILE");
             pathToJsonFile = properties.getProperty("PATH_TO_JSON_FILE");
             pathToXsdFile = properties.getProperty("PATH_TO_XSD_FILE");
+            pathToXslFile = properties.getProperty("PATH_TO_XSL_FILE");
+            pathToTransformXmlFile = properties.getProperty("PATH_TO_TRANSFORM_XSL_FILE");
+
 
         } catch (FileNotFoundException ex) {
             LOGGER.error("Properties config file not found. " + ex.getMessage());

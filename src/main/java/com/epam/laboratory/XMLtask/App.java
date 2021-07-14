@@ -10,12 +10,13 @@ import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class App {
-    public static void main(String[] args) throws JAXBException, ParserConfigurationException, SAXException, IOException {
+    public static void main(String[] args) throws JAXBException, ParserConfigurationException, SAXException, IOException, TransformerException {
 
         // CHECK sorting list of elements
 
@@ -45,16 +46,16 @@ public class App {
 
         // CHECK SAX parser
 
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser = factory.newSAXParser();
-
-        Parser.SAXParser handler = new Parser.SAXParser();
-        parser.parse(new File(Config.pathToXmlFile), handler);
-
-
-        for (DiamondFund.Gem gem : handler.getGems()){
-            System.out.println(gem);
-        }
+//        SAXParserFactory factory = SAXParserFactory.newInstance();
+//        SAXParser parser = factory.newSAXParser();
+//
+//        Parser.SAXParser handler = new Parser.SAXParser();
+//        parser.parse(new File(Config.pathToXmlFile), handler);
+//
+//
+//        for (DiamondFund.Gem gem : handler.getGems()){
+//            System.out.println(gem);
+//        }
 
         // CHECK StAX parser
 
@@ -65,7 +66,10 @@ public class App {
 //            System.out.println(gem);
 //        }
 
+        // CHECK xslt transform
 
+        Parser.XsltTransform xsltTransform = new Parser.XsltTransform();
+        xsltTransform.transform();
 
 
 
