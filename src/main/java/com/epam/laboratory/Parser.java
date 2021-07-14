@@ -239,7 +239,7 @@ public class Parser {
 
 
         public DiamondFund getDiamondFundFromJSON() {
-            DiamondFund diamondFund = null;
+            DiamondFund diamondFund = new DiamondFund();
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 diamondFund = mapper.readValue(new File(Config.pathToJsonFile), DiamondFund.class);

@@ -13,6 +13,7 @@ public class XMLtoJSONConverter {
     private static final int INDENT_FACTOR = 3;
     private static JSONObject jsonObject;
 
+
     public static JSONObject getJsonObject(String pathToXmlFile) {
         try {
             File xmlFile = new File(pathToXmlFile);
@@ -43,8 +44,12 @@ public class XMLtoJSONConverter {
 
 
     private String blackMagicCutting(String json) {
-        json = json.replace("{\"DiamondFund\": ", "");
-        //json = json.replace(String.valueOf(json.charAt(json.length() - 1)), "");
+        StringBuilder stringBuilder = new StringBuilder(json);
+        int index = json.indexOf(":");
+        stringBuilder.delete(0, index + 2);
+        index = stringBuilder.lastIndexOf("}");
+        stringBuilder.deleteCharAt(index);
+        json = stringBuilder.toString();
         return json;
     }
 

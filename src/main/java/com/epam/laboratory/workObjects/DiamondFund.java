@@ -71,7 +71,7 @@ import javax.xml.bind.annotation.XmlType;
 public class DiamondFund {
 
     @XmlElement(name = "Gem")
-    @JsonProperty("Gem")
+    @JsonProperty("gem")
     protected List<DiamondFund.Gem> gem;
 
     /**
