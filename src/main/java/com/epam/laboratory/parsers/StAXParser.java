@@ -43,12 +43,12 @@ public class StAXParser extends Parser {
                             gem = new DiamondFund.Gem();
                             Attribute id = startElement.getAttributeByName(new QName("id"));
                             if (id != null) {
-                                gem.setId(Integer.parseInt(id.getValue()));
+                                gem.setId(Byte.parseByte(id.getValue()));
                             }
                             break;
                         case "color":
                             nextEvent = reader.nextEvent();
-                            gem.setColor(nextEvent.asCharacters().getData());
+                            gem.getVisualParameters().setColor(nextEvent.asCharacters().getData());
                             break;
                         case "name":
                             nextEvent = reader.nextEvent();
@@ -56,7 +56,7 @@ public class StAXParser extends Parser {
                             break;
                         case "numberOfFaces":
                             nextEvent = reader.nextEvent();
-                            gem.setNumberOfFaces(Byte.parseByte(nextEvent.asCharacters().getData()));
+                            gem.getVisualParameters().setNumberOfFaces(Byte.parseByte(nextEvent.asCharacters().getData()));
                             break;
                         case "origin":
                             nextEvent = reader.nextEvent();
@@ -68,7 +68,7 @@ public class StAXParser extends Parser {
                             break;
                         case "transparency":
                             nextEvent = reader.nextEvent();
-                            gem.setTransparency(Byte.parseByte(nextEvent.asCharacters().getData()));
+                            gem.getVisualParameters().setTransparency(Byte.parseByte(nextEvent.asCharacters().getData()));
                             break;
                         case "value":
                             nextEvent = reader.nextEvent();

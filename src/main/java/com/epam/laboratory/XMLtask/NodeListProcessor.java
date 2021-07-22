@@ -35,15 +35,15 @@ public class NodeListProcessor {
             case "ORIGIN":
                 comparator = Comparator.comparing(DiamondFund.Gem::getOrigin);
                 break;
-            case "COLOR":
-                comparator = Comparator.comparing(DiamondFund.Gem::getColor);
-                break;
-            case "TRANSPARENCY":
-                comparator = Comparator.comparingInt(DiamondFund.Gem::getTransparency);
-                break;
-            case "NUMBER_OF_FACES":
-                comparator = Comparator.comparingInt(DiamondFund.Gem::getNumberOfFaces);
-                break;
+//            case "COLOR":
+//                comparator = Comparator.comparing(DiamondFund.Gem.VisualParameters::getColor);
+//                break;
+//            case "TRANSPARENCY":
+//                comparator = Comparator.comparingInt(DiamondFund.Gem.VisualParameters::getTransparency);
+//                break;
+//            case "NUMBER_OF_FACES":
+//                comparator = Comparator.comparingInt(DiamondFund.Gem.VisualParameters::getNumberOfFaces);
+//                break;
             case "VALUE":
                 comparator = (o1, o2) -> (int) (o1.getValue() - o2.getValue());
                 break;
@@ -51,6 +51,10 @@ public class NodeListProcessor {
                 comparator = Comparator.comparing(DiamondFund.Gem::getName);
                 System.out.println("Parameter for sorting not found");
         }
+
+        // Here, code praying to the GOD for protecting our comparator methods from lambda's bugs and other things.
+        // This is really critical step! Be advised to not remove it, even if you don't believer
+        System.out.println("Praise Noodles, Sauce, and Meaty Balls.\n");
 
         List<DiamondFund.Gem> gemList = diamondFund.getGem();
         gemList.sort(comparator);

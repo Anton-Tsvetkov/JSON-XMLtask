@@ -1,22 +1,28 @@
 <schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
-<element name="Gems">
-    <complexType>
-        <sequence>
-            <element name="gem" maxOccurs="unbounded" minOccurs="0">
-                <complexType>
-                    <sequence>
-                        <element type="string" name="color"/>
-                        <element type="string" name="name"/>
-                        <element type="byte" name="numberOfFaces"/>
-                        <element type="string" name="origin"/>
-                        <element type="string" name="preciousness"/>
-                        <element type="byte" name="transparency"/>
-                        <element type="float" name="value"/>
-                    </sequence>
-                    <attribute type="byte" name="id" use="optional"/>
-                </complexType>
-            </element>
-        </sequence>
-    </complexType>
-</element>
+    <element name="DiamondFund">
+        <complexType>
+            <sequence>
+                <element name="gem" maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element name="VisualParameters">
+                                <complexType>
+                                    <sequence>
+                                        <element type="string" name="color"/>
+                                        <element type="byte" name="numberOfFaces"/>
+                                        <element type="float" name="transparency"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <element type="string" name="name"/>
+                            <element type="string" name="origin"/>
+                            <element type="string" name="preciousness"/>
+                            <element type="float" name="value"/>
+                        </sequence>
+                        <attribute type="byte" name="id" use="optional"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
 </schema>
