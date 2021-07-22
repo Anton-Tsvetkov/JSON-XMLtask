@@ -1,22 +1,26 @@
 {"gem": [
    {
-      "color": "green",
-      "numberOfFaces": 9,
       "preciousness": "precious",
       "origin": "some origin place",
-      "transparency": 70,
       "name": "gem1",
       "id": 1,
+      "VisualParameters": {
+         "color": "green",
+         "numberOfFaces": 9,
+         "transparency": 70
+      },
       "value": 12.4
    },
    {
-      "color": "blue",
-      "numberOfFaces": 6,
       "preciousness": "semiprecious",
       "origin": "some place",
-      "transparency": 45,
       "name": "gem2",
       "id": 2,
+      "VisualParameters": {
+         "color": "blue",
+         "numberOfFaces": 6,
+         "transparency": 45
+      },
       "value": 9.8
    }
 ]}

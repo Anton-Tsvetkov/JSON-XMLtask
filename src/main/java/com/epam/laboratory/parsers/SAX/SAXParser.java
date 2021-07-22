@@ -2,6 +2,7 @@ package com.epam.laboratory.parsers.SAX;
 
 import com.epam.laboratory.parsers.Parser;
 import com.epam.laboratory.workObjects.DiamondFund;
+import com.epam.laboratory.workObjects.Gems;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,9 +30,9 @@ public class SAXParser extends Parser {
         return new DiamondFund();
     }
 
-    ArrayList<DiamondFund.Gem> gems = new ArrayList<>();
+    ArrayList<Gems.Gem> gems = new ArrayList<>();
 
-    public ArrayList<DiamondFund.Gem> getGems() {
+    public ArrayList<Gems.Gem> getGems() {
         return gems;
     }
 
