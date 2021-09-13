@@ -1,6 +1,5 @@
 package com.epam.laboratory.XMLtask;
 
-import com.epam.laboratory.Config;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;

@@ -28,6 +28,7 @@ public class XMLtoJSONConverter {
             jsonObject = XML.toJSONObject(xml);
         } catch (IOException ex) {
             LOGGER.error("Error reading from file '" + pathToXmlFile + "'");
+            LOGGER.error(ex.getMessage());
         }
         return jsonObject;
     }
@@ -39,6 +40,7 @@ public class XMLtoJSONConverter {
             bufferedWriter.write(jsonString);
         } catch (IOException ex) {
             LOGGER.error("Error writing to file '" + pathToJsonFile + "'");
+            LOGGER.error(ex.getMessage());
         }
     }
 

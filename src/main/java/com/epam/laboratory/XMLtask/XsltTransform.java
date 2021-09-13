@@ -1,6 +1,7 @@
 package com.epam.laboratory.XMLtask;
 
 import com.epam.laboratory.Config;
+import org.apache.log4j.Logger;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -11,6 +12,9 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 
 public class XsltTransform {
+
+    private final Logger LOGGER = Logger.getLogger(XsltTransform.class);
+
     public void transform(String pathToXslFile, String pathToXmlFile, String pathToTransformXmlFile) {
         try {
             TransformerFactory factory = TransformerFactory.newInstance();
@@ -19,7 +23,7 @@ public class XsltTransform {
             Source xml = new StreamSource(new File(pathToXmlFile));
             transformer.transform(xml, new StreamResult(new File(pathToTransformXmlFile)));
         } catch (TransformerException ex) {
-            ex.printStackTrace();
+            LOGGER.error(ex.getMessage());
         }
     }
 }

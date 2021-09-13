@@ -2,6 +2,7 @@ package com.epam.laboratory.parsers.DOM;
 
 import com.epam.laboratory.parsers.Parser;
 import com.epam.laboratory.workObjects.Gem;
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DOMParser extends Parser {
+
+    private final Logger LOGGER = Logger.getLogger(DOMParser.class);
 
 
     @Override
@@ -30,7 +33,7 @@ public class DOMParser extends Parser {
             domHandler.addGems(document, gems);
 
         } catch (ParserConfigurationException | SAXException | IOException ex) {
-            ex.printStackTrace();
+            LOGGER.error(ex.getMessage());
         }
         return gems;
     }

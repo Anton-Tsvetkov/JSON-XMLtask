@@ -1,6 +1,7 @@
 package com.epam.laboratory.parsers;
 
 import com.epam.laboratory.workObjects.Gem;
+import org.apache.log4j.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -21,12 +22,12 @@ public class StAXParser extends Parser {
     ArrayList<Gem> gems = new ArrayList<>();
     Gem gem;
 
-    XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+    private final Logger LOGGER = Logger.getLogger(StAXParser.class);
 
     @Override
     public ArrayList<Gem> parse(String pathToXMLFile) {
         try (FileInputStream fileInputStream = new FileInputStream(new File(pathToXMLFile))) {
-            XMLEventReader reader = xmlInputFactory.createXMLEventReader(fileInputStream);
+            XMLEventReader reader = XMLInputFactory.newInstance().createXMLEventReader(fileInputStream);
             // идём по элементам xml файла
             while (reader.hasNext()) {
                 // получаем элемент и разбиваем его по атрибутам
@@ -34,7 +35,7 @@ public class StAXParser extends Parser {
                 if (nextEvent.isStartElement()) {
                     StartElement startElement = nextEvent.asStartElement();
 
-                    gemShaping(startElement, nextEvent, reader);
+                    gemShaping(startElement, reader);
 
                     // если цикл дошел до закрывающего элемента Gem,
                     // то добавляем считанный из файла gem в список
@@ -47,15 +48,16 @@ public class StAXParser extends Parser {
                 }
             }
             reader.close();
-        } catch (XMLStreamException | IOException e) {
-            e.printStackTrace();
+        } catch (XMLStreamException | IOException ex) {
+            LOGGER.error(ex.getMessage());
         }
         return gems;
     }
 
-    private void gemShaping(StartElement startElement, XMLEvent nextEvent, XMLEventReader reader) {
+    private void gemShaping(StartElement startElement, XMLEventReader reader) {
         // получаем gem's атрибуты
         try {
+            XMLEvent nextEvent;
             switch (startElement.getName().getLocalPart()) {
                 case "gem":
                     gem = new Gem();
@@ -94,7 +96,7 @@ public class StAXParser extends Parser {
                     break;
             }
         } catch (NoSuchElementException | XMLStreamException ex) {
-            ex.printStackTrace();
+            LOGGER.error(ex.getMessage());
         }
     }
 }
