@@ -9,14 +9,14 @@ import java.util.ArrayList;
 class SAXHandler extends DefaultHandler {
 
     private String lastElementName; // помечаем в каком элементе в данный момент мы находимся
-    ArrayList<Gem> gems = new ArrayList<Gem>();
+    protected ArrayList<Gem> gems = new ArrayList<>();
 
     private String color, name, origin, preciousness;
     private int id;
     private byte numberOfFaces, transparency;
     private float value;
 
-    public ArrayList<Gem> getGems() {
+    protected ArrayList<Gem> getGems() {
         return gems;
     }
 

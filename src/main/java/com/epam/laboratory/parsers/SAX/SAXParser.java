@@ -12,8 +12,10 @@ import java.util.ArrayList;
 
 public class SAXParser extends Parser {
 
+
     @Override
-    public void askParseMethod(String pathToXMLFile) {
+    public ArrayList<Gem> parse(String pathToXMLFile) {
+        ArrayList<Gem> gems = new ArrayList<>();
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             javax.xml.parsers.SAXParser parser = factory.newSAXParser();
@@ -26,11 +28,6 @@ public class SAXParser extends Parser {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-    ArrayList<Gem> gems = new ArrayList<>();
-
-    public ArrayList<Gem> getGems() {
         return gems;
     }
 

@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class StAXParser extends Parser {
 
@@ -22,12 +23,8 @@ public class StAXParser extends Parser {
 
     XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
-    public ArrayList<Gem> getGems() {
-        return gems;
-    }
-
     @Override
-    public void askParseMethod(String pathToXMLFile) {
+    public ArrayList<Gem> parse(String pathToXMLFile) {
         try (FileInputStream fileInputStream = new FileInputStream(new File(pathToXMLFile))) {
             XMLEventReader reader = xmlInputFactory.createXMLEventReader(fileInputStream);
             // идём по элементам xml файла
@@ -36,48 +33,11 @@ public class StAXParser extends Parser {
                 XMLEvent nextEvent = reader.nextEvent();
                 if (nextEvent.isStartElement()) {
                     StartElement startElement = nextEvent.asStartElement();
-                    // получаем gem's атрибуты
-                    switch (startElement.getName().getLocalPart()) {
-                        case "gem":
-                            gem = new Gem();
-                            Attribute id = startElement.getAttributeByName(new QName("id"));
-                            if (id != null) {
-                                gem.setId(Integer.parseInt(id.getValue()));
-                            }
-                            break;
-                        case "color":
-                            nextEvent = reader.nextEvent();
-                            gem.getVisualParameters().setColor(nextEvent.asCharacters().getData());
-                            break;
-                        case "name":
-                            nextEvent = reader.nextEvent();
-                            gem.setName(nextEvent.asCharacters().getData());
-                            break;
-                        case "numberOfFaces":
-                            nextEvent = reader.nextEvent();
-                            gem.getVisualParameters().setNumberOfFaces(Byte.parseByte(nextEvent.asCharacters().getData()));
-                            break;
-                        case "origin":
-                            nextEvent = reader.nextEvent();
-                            gem.setOrigin(nextEvent.asCharacters().getData());
-                            break;
-                        case "preciousness":
-                            nextEvent = reader.nextEvent();
-                            gem.setPreciousness(nextEvent.asCharacters().getData());
-                            break;
-                        case "transparency":
-                            nextEvent = reader.nextEvent();
-                            gem.getVisualParameters().setTransparency(Byte.parseByte(nextEvent.asCharacters().getData()));
-                            break;
-                        case "value":
-                            nextEvent = reader.nextEvent();
-                            gem.setValue(Float.parseFloat(nextEvent.asCharacters().getData()));
-                            break;
 
-                    }
+                    gemShaping(startElement, nextEvent, reader);
+
                     // если цикл дошел до закрывающего элемента Gem,
                     // то добавляем считанный из файла gem в список
-
                 }
                 if (nextEvent.isEndElement()) {
                     EndElement endElement = nextEvent.asEndElement();
@@ -90,6 +50,51 @@ public class StAXParser extends Parser {
         } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
+        return gems;
     }
 
+    private void gemShaping(StartElement startElement, XMLEvent nextEvent, XMLEventReader reader) {
+        // получаем gem's атрибуты
+        try {
+            switch (startElement.getName().getLocalPart()) {
+                case "gem":
+                    gem = new Gem();
+                    Attribute id = startElement.getAttributeByName(new QName("id"));
+                    if (id != null) {
+                        gem.setId(Integer.parseInt(id.getValue()));
+                    }
+                    break;
+                case "color":
+                    nextEvent = reader.nextEvent();
+                    gem.getVisualParameters().setColor(nextEvent.asCharacters().getData());
+                    break;
+                case "name":
+                    nextEvent = reader.nextEvent();
+                    gem.setName(nextEvent.asCharacters().getData());
+                    break;
+                case "numberOfFaces":
+                    nextEvent = reader.nextEvent();
+                    gem.getVisualParameters().setNumberOfFaces(Byte.parseByte(nextEvent.asCharacters().getData()));
+                    break;
+                case "origin":
+                    nextEvent = reader.nextEvent();
+                    gem.setOrigin(nextEvent.asCharacters().getData());
+                    break;
+                case "preciousness":
+                    nextEvent = reader.nextEvent();
+                    gem.setPreciousness(nextEvent.asCharacters().getData());
+                    break;
+                case "transparency":
+                    nextEvent = reader.nextEvent();
+                    gem.getVisualParameters().setTransparency(Byte.parseByte(nextEvent.asCharacters().getData()));
+                    break;
+                case "value":
+                    nextEvent = reader.nextEvent();
+                    gem.setValue(Float.parseFloat(nextEvent.asCharacters().getData()));
+                    break;
+            }
+        } catch (NoSuchElementException | XMLStreamException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

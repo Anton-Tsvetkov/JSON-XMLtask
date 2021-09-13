@@ -2,7 +2,6 @@ package com.epam.laboratory.parsers.JSON;
 
 import com.epam.laboratory.parsers.Parser;
 import com.epam.laboratory.workObjects.Gem;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -19,16 +18,14 @@ public class JSONParser extends Parser {
 
     private final Logger LOGGER = Logger.getLogger(JSONParser.class);
 
-    ArrayList<Gem> gems = new ArrayList<>();
-
-    public ArrayList<Gem> getGems() {
-        return gems;
-    }
-
+    protected ArrayList<Gem> gems = new ArrayList<>();
 
     @Override
-    public void askParseMethod(String pathToJSONFile) {
-        getGemsFromJSON(pathToJSONFile);
+    public ArrayList<Gem> parse(String pathToJSONFile) {
+        JSONObject jsonObject = new JSONObject(getFileContentAsString(pathToJSONFile));
+        JSONArray jsonArray = jsonObject.getJSONArray("gem");
+        castJsonArrayToArrayList(jsonArray);
+        return gems;
     }
 
     private String getFileContentAsString(String path) {
@@ -40,11 +37,6 @@ public class JSONParser extends Parser {
         return path;
     }
 
-    public void getGemsFromJSON(String pathToJSONFile) {
-        JSONObject jsonObject = new JSONObject(getFileContentAsString(pathToJSONFile));
-        JSONArray jsonArray = jsonObject.getJSONArray("gem");
-        castJsonArrayToArrayList(jsonArray);
-    }
 
     private void castJsonArrayToArrayList(JSONArray jsonArray) {
         try {
