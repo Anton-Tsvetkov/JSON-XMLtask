@@ -1,26 +1,38 @@
 {"gem": [
    {
       "preciousness": "precious",
-      "origin": "some origin place",
-      "name": "gem1",
-      "id": 1,
+      "origin": "some mount",
+      "name": "cool gem",
+      "id": 7960,
+      "VisualParameters": {
+         "color": "blue",
+         "numberOfFaces": 8,
+         "transparency": 19
+      },
+      "value": 13.8
+   },
+   {
+      "preciousness": "precious",
+      "origin": "big mount",
+      "name": "cooler gem",
+      "id": 3926,
       "VisualParameters": {
          "color": "green",
-         "numberOfFaces": 9,
-         "transparency": 70
+         "numberOfFaces": 6,
+         "transparency": 68
       },
-      "value": 12.4
+      "value": 32.23
    },
    {
       "preciousness": "semiprecious",
-      "origin": "some place",
-      "name": "gem2",
-      "id": 2,
+      "origin": "rock mount",
+      "name": "gem",
+      "id": 928,
       "VisualParameters": {
-         "color": "blue",
-         "numberOfFaces": 6,
-         "transparency": 45
+         "color": "violet",
+         "numberOfFaces": 4,
+         "transparency": 30
       },
-      "value": 9.8
+      "value": 25.8
    }
 ]}

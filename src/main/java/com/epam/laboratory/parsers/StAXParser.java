@@ -1,6 +1,6 @@
 package com.epam.laboratory.parsers;
 
-import com.epam.laboratory.workObjects.DiamondFund;
+import com.epam.laboratory.workObjects.Gem;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -14,22 +14,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class StAXParser extends Parser {
 
-    List<DiamondFund.Gem> gems = new ArrayList<>();
-    DiamondFund.Gem gem;
+    ArrayList<Gem> gems = new ArrayList<>();
+    Gem gem;
 
     XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
-    public List<DiamondFund.Gem> getGems() {
+    public ArrayList<Gem> getGems() {
         return gems;
     }
 
     @Override
-    public DiamondFund parse(File file) {
-        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+    public void askParseMethod(String pathToXMLFile) {
+        try (FileInputStream fileInputStream = new FileInputStream(new File(pathToXMLFile))) {
             XMLEventReader reader = xmlInputFactory.createXMLEventReader(fileInputStream);
             // идём по элементам xml файла
             while (reader.hasNext()) {
@@ -40,10 +39,10 @@ public class StAXParser extends Parser {
                     // получаем gem's атрибуты
                     switch (startElement.getName().getLocalPart()) {
                         case "gem":
-                            gem = new DiamondFund.Gem();
+                            gem = new Gem();
                             Attribute id = startElement.getAttributeByName(new QName("id"));
                             if (id != null) {
-                                gem.setId(Byte.parseByte(id.getValue()));
+                                gem.setId(Integer.parseInt(id.getValue()));
                             }
                             break;
                         case "color":
@@ -74,8 +73,7 @@ public class StAXParser extends Parser {
                             nextEvent = reader.nextEvent();
                             gem.setValue(Float.parseFloat(nextEvent.asCharacters().getData()));
                             break;
-                        default:
-                            System.out.println("No find \"" + startElement.getName().getLocalPart() + "\" element");
+
                     }
                     // если цикл дошел до закрывающего элемента Gem,
                     // то добавляем считанный из файла gem в список
@@ -92,7 +90,6 @@ public class StAXParser extends Parser {
         } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
 }

@@ -23,7 +23,7 @@ public class InspectorXML {
     private static final Logger LOGGER = Logger.getLogger(InspectorXML.class);
 
 
-    public static boolean validateByXsd(String xmlFilePath, String xmlSchemaFilePath) {
+    public boolean validateByXsd(String xmlFilePath, String xmlSchemaFilePath) {
 
         // Try the validation, we assume that if there are any issues with the validation
         // process that the input is invalid.

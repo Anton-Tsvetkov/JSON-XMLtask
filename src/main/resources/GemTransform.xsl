@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Gems>
-    <Origin place="some origin place">
-        <id>1</id>
-        <color>green</color>
-        <name>gem1</name>
-        <numberOfFaces>9</numberOfFaces>
+<DiamondFund>
+    <Origin place="some mount">
+        <VisualParameters>
+            <color>blue</color>
+            <numberOfFaces>8</numberOfFaces>
+            <transparency>19</transparency>
+        </VisualParameters>
+        <id>7960</id>
+        <name>cool gem</name>
         <preciousness>precious</preciousness>
-        <transparency>70</transparency>
-        <value>12.4</value>
+        <value>13.8</value>
     </Origin>
-    <Origin place="some place">
-        <id>2</id>
-        <color>blue</color>
-        <name>gem2</name>
-        <numberOfFaces>6</numberOfFaces>
+    <Origin place="big mount">
+        <VisualParameters>
+            <color>green</color>
+            <numberOfFaces>6</numberOfFaces>
+            <transparency>68</transparency>
+        </VisualParameters>
+        <id>3926</id>
+        <name>cooler gem</name>
+        <preciousness>precious</preciousness>
+        <value>32.23</value>
+    </Origin>
+    <Origin place="rock mount">
+        <VisualParameters>
+            <color>violet</color>
+            <numberOfFaces>4</numberOfFaces>
+            <transparency>30</transparency>
+        </VisualParameters>
+        <id>928</id>
+        <name>gem</name>
         <preciousness>semiprecious</preciousness>
-        <transparency>45</transparency>
-        <value>9.8</value>
+        <value>25.8</value>
     </Origin>
-</Gems>
+</DiamondFund>

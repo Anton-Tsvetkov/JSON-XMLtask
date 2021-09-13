@@ -1,8 +1,7 @@
 package com.epam.laboratory.parsers.SAX;
 
 import com.epam.laboratory.parsers.Parser;
-import com.epam.laboratory.workObjects.DiamondFund;
-import com.epam.laboratory.workObjects.Gems;
+import com.epam.laboratory.workObjects.Gem;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,25 +13,24 @@ import java.util.ArrayList;
 public class SAXParser extends Parser {
 
     @Override
-    public DiamondFund parse(File file) {
+    public void askParseMethod(String pathToXMLFile) {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             javax.xml.parsers.SAXParser parser = factory.newSAXParser();
 
             SAXHandler handler = new SAXHandler();
-            parser.parse(file, handler);
+            parser.parse(new File(pathToXMLFile), handler);
 
             gems.addAll(handler.getGems());
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-        return new DiamondFund();
     }
 
-    ArrayList<Gems.Gem> gems = new ArrayList<>();
+    ArrayList<Gem> gems = new ArrayList<>();
 
-    public ArrayList<Gems.Gem> getGems() {
+    public ArrayList<Gem> getGems() {
         return gems;
     }
 

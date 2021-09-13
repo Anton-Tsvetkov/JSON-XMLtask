@@ -3,18 +3,34 @@
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
 
-    <xsl:template match="Gems/gem">
+    <xsl:template match="DiamondFund/gem">
         <xsl:element name="Origin">
             <xsl:attribute name="place">
                 <xsl:value-of select="origin"/>
             </xsl:attribute>
-            <id><xsl:value-of select="@id"/></id>
-            <color><xsl:value-of select="color"/></color>
-            <name><xsl:value-of select="name"/></name>
-            <numberOfFaces><xsl:value-of select="numberOfFaces"/></numberOfFaces>
-            <preciousness><xsl:value-of select="preciousness"/></preciousness>
-            <transparency><xsl:value-of select="transparency"/></transparency>
-            <value><xsl:value-of select="value"/></value>
+            <VisualParameters>
+                <color>
+                    <xsl:value-of select="VisualParameters/color"/>
+                </color>
+                <numberOfFaces>
+                    <xsl:value-of select="VisualParameters/numberOfFaces"/>
+                </numberOfFaces>
+                <transparency>
+                    <xsl:value-of select="VisualParameters/transparency"/>
+                </transparency>
+            </VisualParameters>
+            <id>
+                <xsl:value-of select="@id"/>
+            </id>
+            <name>
+                <xsl:value-of select="name"/>
+            </name>
+            <preciousness>
+                <xsl:value-of select="preciousness"/>
+            </preciousness>
+            <value>
+                <xsl:value-of select="value"/>
+            </value>
         </xsl:element>
     </xsl:template>
 

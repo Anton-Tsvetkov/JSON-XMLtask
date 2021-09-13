@@ -1,6 +1,6 @@
 package com.epam.laboratory.parsers.SAX;
 
-import com.epam.laboratory.workObjects.Gems;
+import com.epam.laboratory.workObjects.Gem;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 class SAXHandler extends DefaultHandler {
 
     private String lastElementName; // помечаем в каком элементе в данный момент мы находимся
-    ArrayList<Gems.Gem> gems = new ArrayList<Gems.Gem>();
+    ArrayList<Gem> gems = new ArrayList<Gem>();
 
     private String color, name, origin, preciousness;
     private int id;
     private byte numberOfFaces, transparency;
     private float value;
 
-    public ArrayList<Gems.Gem> getGems() {
+    public ArrayList<Gem> getGems() {
         return gems;
     }
 
@@ -72,7 +72,7 @@ class SAXHandler extends DefaultHandler {
                 (preciousness != null && !preciousness.isEmpty()) &&
                 transparency != 0 &&
                 value != 0) {
-            gems.add(new Gems.Gem(color, id, name, numberOfFaces, origin, preciousness, transparency, value));
+            gems.add(new Gem(color, id, name, numberOfFaces, origin, preciousness, transparency, value));
             color = null;
             id = 0;
             name = null;
