@@ -112,37 +112,6 @@ import javax.xml.bind.annotation.XmlType;
 @JsonRootName(value = "gem")
 public class Gem {
 
-    protected List<Gem> gem;
-
-    /**
-     * Gets the value of the gem property.
-     *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the gem property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getGem().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Gem }
-     */
-    public List<Gem> getGem() {
-        if (gem == null) {
-            gem = new ArrayList<Gem>();
-        }
-        return this.gem;
-    }
-
-
-
     public Gem(String color, int id, String name, byte numberOfFaces, String origin, String preciousness, byte transparency, float value) {
 
         this.visualParameters = new VisualParameters(color, numberOfFaces, transparency);
@@ -286,8 +255,7 @@ public class Gem {
     @Override
     public String toString() {
         return "Gem{" +
-                "gem=" + gem +
-                ", visualParameters=" + visualParameters +
+                "visualParameters=" + visualParameters +
                 ", name='" + name + '\'' +
                 ", origin='" + origin + '\'' +
                 ", preciousness='" + preciousness + '\'' +
