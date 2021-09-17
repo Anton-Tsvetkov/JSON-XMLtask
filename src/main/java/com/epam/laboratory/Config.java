@@ -16,26 +16,6 @@ public class Config {
     public static String pathToXslFile;
     public static String pathToTransformXmlFile;
 
-    public String getPathToXmlFile() {
-        return pathToXmlFile;
-    }
-
-    public String getPathToJsonFile() {
-        return pathToJsonFile;
-    }
-
-    public String getPathToXsdFile() {
-        return pathToXsdFile;
-    }
-
-    public String getPathToXslFile() {
-        return pathToXslFile;
-    }
-
-    public String getPathToTransformXmlFile() {
-        return pathToTransformXmlFile;
-    }
-
     private static final Logger LOGGER = Logger.getLogger(Config.class);
 
     static {
@@ -58,4 +38,5 @@ public class Config {
             LOGGER.error(ex.getMessage());
         }
     }
+
 }

@@ -6,7 +6,7 @@ import com.epam.laboratory.workObjects.Gem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ParseMethodAsker {
+public class ParseMethodQuestioner {
 
     public void askParseMethod() {
 
@@ -22,7 +22,7 @@ public class ParseMethodAsker {
                     "\n4.Parse objects from JSON");
             System.out.print(":");
             parseMethod = scanner.nextLine();
-            gems = new ParseMethodCaller().callObjectParseMethodByNumber(parseMethod.toLowerCase().trim());
+            System.out.println(new ParseMethodCaller().callObjectParseMethodByNumber(parseMethod.toLowerCase().trim()));
         } else if (parseMethod.contains("other")) {
             System.out.println("Choose parse method:" +
                     "\n1.Parse from XML to JSON" +
@@ -30,16 +30,10 @@ public class ParseMethodAsker {
                     "\n3.XML(Gem)->XML(Origin) with XSLT");
             System.out.print(":");
             parseMethod = scanner.nextLine();
-            new ParseMethodCaller().callOtherParseMethodByNumber(parseMethod.toLowerCase().trim());
+            System.out.println(new ParseMethodCaller().callOtherParseMethodByNumber(parseMethod.toLowerCase().trim()));
         } else {
             System.out.println("The specified method cannot be found");
         }
-
     }
 
-    ArrayList<Gem> gems = new ArrayList<>();
-
-    public ArrayList<Gem> getGems() {
-        return gems;
-    }
 }

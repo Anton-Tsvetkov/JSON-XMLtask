@@ -13,44 +13,41 @@ import java.util.ArrayList;
 
 public class ParseMethodCaller {
 
-    Config config = new Config();
-
     public ArrayList<Gem> callObjectParseMethodByNumber(String parseMethod){
         switch (parseMethod) {
             case "1":
                 SAXParser saxParser = new SAXParser();
-                return saxParser.parse(config.getPathToXmlFile());
+                return saxParser.parse(Config.pathToXmlFile);
             case "2":
                 StAXParser stAXParser = new StAXParser();
-                return stAXParser.parse(config.getPathToXmlFile());
+                return stAXParser.parse(Config.pathToXmlFile);
             case "3":
                 DOMParser domParser = new DOMParser();
-                return domParser.parse(config.getPathToXmlFile());
+                return domParser.parse(Config.pathToXmlFile);
             case "4":
                 JSONParser jsonParser = new JSONParser();
-                return jsonParser.parse(config.getPathToJsonFile());
+                return jsonParser.parse(Config.pathToJsonFile);
             default:
                 System.out.println("Parse method " + parseMethod + " not found");
         }
         return new ArrayList<>();
     }
 
-    public ArrayList<Gem> callOtherParseMethodByNumber(String parseMethod){
+    public boolean callOtherParseMethodByNumber(String parseMethod){
         switch (parseMethod) {
             case "1":
                 XMLtoJSONConverter xmLtoJSONConverter = new XMLtoJSONConverter();
-                xmLtoJSONConverter.convert(config.getPathToXmlFile(), config.getPathToJsonFile());
-                break;
+                xmLtoJSONConverter.convert(Config.pathToXmlFile, Config.pathToJsonFile);
+                return true;
             case "2":
-                System.out.println(new InspectorXML().validateByXsd(config.getPathToXmlFile(), Config.pathToXsdFile));
-                break;
+                return new InspectorXML().validateByXsd(Config.pathToXmlFile, Config.pathToXsdFile);
             case "3":
                 new XsltTransform().transform(Config.pathToXslFile, Config.pathToXmlFile, Config.pathToTransformXmlFile);
-                break;
+                return true;
             default:
                 System.out.println("Parse method " + parseMethod + " not found");
+                return false;
         }
-        return new ArrayList<>();
     }
 
 }
