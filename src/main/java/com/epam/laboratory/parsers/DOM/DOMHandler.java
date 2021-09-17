@@ -10,15 +10,15 @@ public class DOMHandler {
     public void addGems(Document document, ArrayList<Gem> gems) {
         NodeList nodeList = document.getElementsByTagName("gem");
         for (int i = 0; i < nodeList.getLength(); i++) {
-            gems.add(collectGem(nodeList.item(0)));
+            gems.add(collectGem(nodeList.item(i)));
         }
-
     }
 
     private static Gem collectGem(Node node) {
         Gem gem = new Gem();
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
+            gem.setId(Integer.parseInt(element.getAttribute("id")));
             gem.setOrigin(getTagValue("origin", element));
             gem.setValue(Float.parseFloat(getTagValue("value", element)));
             gem.setName(getTagValue("name", element));
@@ -33,7 +33,7 @@ public class DOMHandler {
 
     private static String getTagValue(String tag, Element element) {
         NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodeList.item(0);
+        Node node = nodeList.item(0);
         return node.getNodeValue();
     }
 

@@ -28,6 +28,7 @@ public class DOMParser extends Parser {
             DocumentBuilder builder = factory.newDocumentBuilder();
             // Запарсили XML, создав структуру Document. Теперь у нас есть доступ ко всем элементам, каким нам нужно.
             Document document = builder.parse(new File(pathToXMLFile));
+            document.getDocumentElement().normalize();
 
             DOMHandler domHandler = new DOMHandler();
             domHandler.addGems(document, gems);
