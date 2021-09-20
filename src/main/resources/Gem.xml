@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiamondFund>
+    <gem id="7960">
+        <VisualParameters>
+            <color>blue</color>
+            <numberOfFaces>8</numberOfFaces>
+            <transparency>19</transparency>
+        </VisualParameters>
+        <name>cool gem</name>
+        <origin>some mount</origin>
+        <preciousness>precious</preciousness>
+        <value>13.8</value>
+    </gem>
+    <gem id="3926">
+        <VisualParameters>
+            <color>green</color>
+            <numberOfFaces>6</numberOfFaces>
+            <transparency>68</transparency>
+        </VisualParameters>
+        <name>cooler gem</name>
+        <origin>big mount</origin>
+        <preciousness>precious</preciousness>
+        <value>32.23</value>
+    </gem>
+    <gem id="928">
+        <VisualParameters>
+            <color>violet</color>
+            <numberOfFaces>4</numberOfFaces>
+            <transparency>30</transparency>
+        </VisualParameters>
+        <name>gem</name>
+        <origin>rock mount</origin>
+        <preciousness>semiprecious</preciousness>
+        <value>25.8</value>
+    </gem>
+</DiamondFund>
