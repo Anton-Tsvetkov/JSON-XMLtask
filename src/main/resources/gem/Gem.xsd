@@ -1,0 +1,62 @@
+<schema elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="DiamondFund">
+        <complexType>
+            <sequence>
+                <element name="gem" maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element name="VisualParameters">
+                                <complexType>
+                                    <sequence>
+                                        <element name="color">
+                                            <simpleType>
+                                                <restriction base="string">
+                                                    <enumeration value="green"/>
+                                                    <enumeration value="blue"/>
+                                                    <enumeration value="black"/>
+                                                    <enumeration value="white"/>
+                                                    <enumeration value="yellow"/>
+                                                    <enumeration value="orange"/>
+                                                    <enumeration value="violet"/>
+                                                    <enumeration value="red"/>
+                                                </restriction>
+                                            </simpleType>
+                                        </element>
+                                        <element type="positiveInteger" name="numberOfFaces"/>
+                                        <element name="transparency">
+                                            <simpleType>
+                                                <restriction base="integer">
+                                                    <minInclusive value="0"/>
+                                                    <maxInclusive value="100"/>
+                                                </restriction>
+                                            </simpleType>
+                                        </element>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <element type="string" name="name"/>
+                            <element type="string" name="origin"/>
+                            <element name="preciousness">
+                                <simpleType>
+                                    <restriction base="string">
+                                        <enumeration value="precious"/>
+                                        <enumeration value="semiprecious"/>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                            <element name="value">
+                                <simpleType>
+                                    <restriction base="float">
+                                        <minInclusive value="0"/>
+                                        <maxInclusive value="5000"/>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                        </sequence>
+                        <attribute type="positiveInteger" name="id" use="optional"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

@@ -1,0 +1,46 @@
+<schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="World">
+        <complexType>
+            <sequence>
+                <element name="country" maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                        <sequence>
+                            <element type="string" name="countryName"/>
+                            <element name="population">
+                                <simpleType>
+                                    <restriction base="integer">
+                                        <minInclusive value="0"/>
+                                        <maxInclusive value="2147483647"/>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                            <element name="foundYear">
+                                <simpleType>
+                                    <restriction base="integer">
+                                        <minInclusive value="0"/>
+                                        <maxInclusive value="2020"/>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                            <element name="region" maxOccurs="unbounded" minOccurs="0">
+                                <complexType>
+                                    <sequence>
+                                        <element name="regionName"/>
+                                        <element name="locality">
+                                            <complexType>
+                                                <attribute type="integer" name="index" use="required"/>
+                                                <attribute type="string" name="type" use="required"/>
+                                            </complexType>
+                                        </element>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

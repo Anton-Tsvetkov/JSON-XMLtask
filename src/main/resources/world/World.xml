@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<World xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <country>
+        <countryName>Equestria</countryName>
+        <population>201490</population>
+        <foundYear>1394</foundYear>
+        <region>
+            <regionName>Novigrad</regionName>
+            <locality index="2248" type="city"/>
+        </region>
+        <region>
+            <regionName>Rapture</regionName>
+            <locality index="3052" type="town"/>
+        </region>
+        <region>
+            <regionName>Hill-Valley</regionName>
+            <locality index="4693" type="village"/>
+        </region>
+    </country>
+    <country>
+        <countryName>Detective</countryName>
+        <population>95280</population>
+        <foundYear>1934</foundYear>
+        <region>
+            <regionName>Smallville</regionName>
+            <locality index="1224" type="village"/>
+        </region>
+        <region>
+            <regionName>Gotham</regionName>
+            <locality index="4002" type="city"/>
+        </region>
+        <region>
+            <regionName>Metropolis</regionName>
+            <locality index="3653" type="town"/>
+        </region>
+    </country>
+    <country>
+        <countryName>Gondor</countryName>
+        <population>1035293</population>
+        <foundYear>1320</foundYear>
+        <region>
+            <regionName>Minas Itil'</regionName>
+            <locality index="2532" type="town"/>
+        </region>
+        <region>
+            <regionName>Linhir</regionName>
+            <locality index="4283" type="village"/>
+        </region>
+        <region>
+            <regionName>DolAmroth</regionName>
+            <locality index="5428" type="town"/>
+        </region>
+        <region>
+            <regionName>Minas Tirith</regionName>
+            <locality index="9375" type="town"/>
+        </region>
+        <region>
+            <regionName>Pelagir</regionName>
+            <locality index="5522" type="town"/>
+        </region>
+    </country>
+</World>
