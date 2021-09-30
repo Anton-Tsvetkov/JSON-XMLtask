@@ -5,6 +5,10 @@ import com.epam.laboratory.parsers.JSON.JSONParser;
 import com.epam.laboratory.parsers.JSON.XMLtoJSONConverter;
 import com.epam.laboratory.parsers.Parser;
 import com.epam.laboratory.parsers.SAX.SAXParser;
+import com.epam.laboratory.parsers.SAX.handlers.SAXGemHandler;
+import com.epam.laboratory.parsers.SAX.handlers.SAXWorldHandler;
+import com.epam.laboratory.workObjects.world.Country;
+import com.epam.laboratory.workObjects.world.World;
 
 import java.util.ArrayList;
 
@@ -15,9 +19,9 @@ public class ParseMethodCaller {
         objectType = objectType.toLowerCase().trim();
         switch (parseMethod) {
             case "1":
-                return returnParsedListByObjectType(new SAXParser(), objectType);
+                return returnParsedListByObjectType(new SAXParser(), objectType, "sax");
             case "2":
-                return returnParsedListByObjectType(new JSONParser(), objectType);
+                return returnParsedListByObjectType(new JSONParser(), objectType, "json");
             default:
                 System.out.println("Parse method \"" + parseMethod + "\" not found");
         }
@@ -52,8 +56,8 @@ public class ParseMethodCaller {
         }
     }
 
-    private ArrayList<?> returnParsedListByObjectType(Parser parser, String objectType) {
-        if (parser.getClass().getName().toLowerCase().contains("sax")) {
+    private ArrayList<?> returnParsedListByObjectType(Parser parser, String objectType, String parserType) {
+        if (parserType.contains("sax")) {
             if (objectType.contains("world")) {
                 return parser.parse(Config.pathToWorldXmlFile, objectType);
             } else if (objectType.contains("gem")) {
@@ -62,7 +66,7 @@ public class ParseMethodCaller {
                 System.out.println("No found \"" + objectType + "\" object type");
                 return new ArrayList<>();
             }
-        } else if (parser.getClass().getName().toLowerCase().contains("json")) {
+        } else if (parserType.contains("json")) {
             if (objectType.contains("world")) {
                 return parser.parse(Config.pathToWorldJsonFile, objectType);
             } else if (objectType.contains("gem")) {
@@ -72,7 +76,7 @@ public class ParseMethodCaller {
                 return new ArrayList<>();
             }
         } else {
-            System.out.println("No found \"" + parser.getClass() + "\" parser type");
+            System.out.println("No found \"" + parserType + "\" parser type");
             return new ArrayList<>();
         }
     }
