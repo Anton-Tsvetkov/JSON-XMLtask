@@ -1,14 +1,13 @@
-package com.epam.laboratory.parsers.SAX;
+package com.epam.laboratory.parsers.SAX.handlers;
 
 import com.epam.laboratory.workObjects.world.Country;
 import com.epam.laboratory.workObjects.world.Locality;
 import com.epam.laboratory.workObjects.world.Region;
 import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
-public class SAXWorldHandler extends DefaultHandler {
+public class SAXWorldHandler extends SAXHandler {
 
     private String lastElementName; // помечаем в каком элементе в данный момент мы находимся
 
@@ -24,7 +23,8 @@ public class SAXWorldHandler extends DefaultHandler {
     private ArrayList<Integer> indexes = new ArrayList<>();
 
 
-    protected ArrayList<Country> getCountries() {
+    @Override
+    public ArrayList<Country> getObjects(String pathToXMLFile) {
         return countries;
     }
 
