@@ -1,103 +1,103 @@
 {
-   "country": [
-      {
-         "countryName": "Equestria",
-         "region": [
-            {
-               "regionName": "Novigrad",
-               "locality": {
-                  "index": 2248,
-                  "type": "city"
-               }
-            },
-            {
-               "regionName": "Rapture",
-               "locality": {
-                  "index": 3052,
-                  "type": "town"
-               }
-            },
-            {
-               "regionName": "Hill-Valley",
-               "locality": {
-                  "index": 4693,
-                  "type": "village"
-               }
-            }
-         ],
-         "population": 201490,
-         "foundYear": 1394
-      },
-      {
-         "countryName": "Detective",
-         "region": [
-            {
-               "regionName": "Smallville",
-               "locality": {
-                  "index": 1224,
-                  "type": "village"
-               }
-            },
-            {
-               "regionName": "Gotham",
-               "locality": {
-                  "index": 4002,
-                  "type": "city"
-               }
-            },
-            {
-               "regionName": "Metropolis",
-               "locality": {
-                  "index": 3653,
-                  "type": "town"
-               }
-            }
-         ],
-         "population": 95280,
-         "foundYear": 1934
-      },
-      {
-         "countryName": "Gondor",
-         "region": [
-            {
-               "regionName": "Minas Itil'",
-               "locality": {
-                  "index": 2532,
-                  "type": "town"
-               }
-            },
-            {
-               "regionName": "Linhir",
-               "locality": {
-                  "index": 4283,
-                  "type": "village"
-               }
-            },
-            {
-               "regionName": "DolAmroth",
-               "locality": {
-                  "index": 5428,
-                  "type": "town"
-               }
-            },
-            {
-               "regionName": "Minas Tirith",
-               "locality": {
-                  "index": 9375,
-                  "type": "town"
-               }
-            },
-            {
-               "regionName": "Pelagir",
-               "locality": {
-                  "index": 5522,
-                  "type": "town"
-               }
-            }
-         ],
-         "population": 1035293,
-         "foundYear": 1320
-      }
-   ],
-   "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+  "country": [
+    {
+      "countryName": "Equestria",
+      "region": [
+        {
+          "regionName": "Novigrad",
+          "locality": {
+            "index": 2248,
+            "type": "city"
+          }
+        },
+        {
+          "regionName": "Rapture",
+          "locality": {
+            "index": 3052,
+            "type": "town"
+          }
+        },
+        {
+          "regionName": "Hill-Valley",
+          "locality": {
+            "index": 4693,
+            "type": "village"
+          }
+        }
+      ],
+      "population": 201490,
+      "foundYear": 1394
+    },
+    {
+      "countryName": "Detective",
+      "region": [
+        {
+          "regionName": "Smallville",
+          "locality": {
+            "index": 1224,
+            "type": "village"
+          }
+        },
+        {
+          "regionName": "Gotham",
+          "locality": {
+            "index": 4002,
+            "type": "city"
+          }
+        },
+        {
+          "regionName": "Metropolis",
+          "locality": {
+            "index": 3653,
+            "type": "town"
+          }
+        }
+      ],
+      "population": 95280,
+      "foundYear": 1934
+    },
+    {
+      "countryName": "Gondor",
+      "region": [
+        {
+          "regionName": "Minas Itil'",
+          "locality": {
+            "index": 2532,
+            "type": "town"
+          }
+        },
+        {
+          "regionName": "Linhir",
+          "locality": {
+            "index": 4283,
+            "type": "village"
+          }
+        },
+        {
+          "regionName": "DolAmroth",
+          "locality": {
+            "index": 5428,
+            "type": "town"
+          }
+        },
+        {
+          "regionName": "Minas Tirith",
+          "locality": {
+            "index": 9375,
+            "type": "town"
+          }
+        },
+        {
+          "regionName": "Pelagir",
+          "locality": {
+            "index": 5522,
+            "type": "town"
+          }
+        }
+      ],
+      "population": 1035293,
+      "foundYear": 1320
+    }
+  ],
+  "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
 }

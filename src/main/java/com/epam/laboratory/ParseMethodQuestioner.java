@@ -7,9 +7,16 @@ public class ParseMethodQuestioner {
 
     public void askParseMethod() {
 
-        System.out.println("Get objects from file or other ?");
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose parse object type:" +
+                "\nWorld" +
+                "\nGem");
+        String objectType = scanner.nextLine();
+
+        System.out.println("Get objects from file or other ?");
         String parseMethod = scanner.nextLine();
+
         parseMethod = parseMethod.toLowerCase().trim();
         if (parseMethod.contains("object")) {
             System.out.println("Choose parse method:" +
@@ -17,14 +24,17 @@ public class ParseMethodQuestioner {
                     "\n2.Parse objects from JSON");
             System.out.print(":");
             parseMethod = scanner.nextLine();
-            System.out.println(new ParseMethodCaller().callObjectParseMethodByNumber(parseMethod.toLowerCase().trim()));
+
+            System.out.println(
+                    new ParseMethodCaller()
+                            .callObjectParseMethodByNumber(parseMethod.toLowerCase().trim(), objectType));
         } else if (parseMethod.contains("other")) {
             System.out.println("Choose parse method:" +
                     "\n1.Parse from XML to JSON" +
                     "\n2.XML/XSD check");
             System.out.print(":");
             parseMethod = scanner.nextLine();
-            System.out.println(new ParseMethodCaller().callOtherParseMethodByNumber(parseMethod.toLowerCase().trim()));
+            System.out.println(new ParseMethodCaller().callOtherParseMethodByNumber(parseMethod.toLowerCase().trim(), objectType));
         } else {
             System.out.println("The specified method cannot be found");
         }

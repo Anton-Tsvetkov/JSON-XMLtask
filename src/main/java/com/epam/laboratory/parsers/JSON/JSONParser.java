@@ -19,23 +19,34 @@ public class JSONParser extends Parser {
 
     private final Logger LOGGER = Logger.getLogger(JSONParser.class);
 
-    protected ArrayList<Country> countries = new ArrayList<>();
-    protected ArrayList<Gem> gems = new ArrayList<>();
-
-
-    @Override
-    public ArrayList<?> parse(String pathToJSONFile) {
+    public ArrayList<?> parse(String pathToJSONFile, String objectType) {
+        ArrayList<Object> objects = new ArrayList<>();
         JSONObject jsonObject = new JSONObject(getFileContentAsString(pathToJSONFile));
-        if(jsonObject.toString().contains("country")) {
-            JSONArray jsonArray = jsonObject.getJSONArray("country");
-            castJsonArrayToArrayListWorld(jsonArray);
-            return countries;
-        } else if (jsonObject.toString().contains("gem")){
-            JSONArray jsonArray = jsonObject.getJSONArray("gem");
-            castJsonArrayToArrayListGem(jsonArray);
-            return gems;
-        } else return new ArrayList<>();
+        JSONArray jsonArray;
+        Object object = new Object();
+        if (objectType.toLowerCase().contains("world")) {
+            jsonArray = jsonObject.getJSONArray("country");
+            object = new Country();
+        } else if (objectType.toLowerCase().contains("gem")) {
+            jsonArray = jsonObject.getJSONArray("gem");
+            object = new Gem();
+        } else {
+            jsonArray = new JSONArray();
+        }
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                objects.add(objectMapper.readValue(jsonArray.get(i).toString(), object.getClass()));
+            }
+        } catch (IOException ex) {
+            LOGGER.error(ex.getMessage());
+        }
+
+        return objects;
+
     }
+
 
     private String getFileContentAsString(String path) {
         try (Stream<String> lines = Files.lines(Paths.get(path))) {
@@ -46,30 +57,5 @@ public class JSONParser extends Parser {
         return path;
     }
 
-
-
-    private void castJsonArrayToArrayListGem(JSONArray jsonArray) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                gems.add(objectMapper.readValue(jsonArray.get(i).toString(), Gem.class));
-            }
-        } catch (IOException ex) {
-            LOGGER.error(ex.getMessage());
-        }
-
-    }
-
-
-    private void castJsonArrayToArrayListWorld(JSONArray jsonArray) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                countries.add(objectMapper.readValue(jsonArray.get(i).toString(), Country.class));
-            }
-        } catch (IOException ex) {
-            LOGGER.error(ex.getMessage());
-        }
-
-    }
 }
+

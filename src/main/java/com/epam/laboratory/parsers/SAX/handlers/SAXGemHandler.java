@@ -1,4 +1,4 @@
-package com.epam.laboratory.parsers.SAX;
+package com.epam.laboratory.parsers.SAX.handlers;
 
 import com.epam.laboratory.workObjects.gem.Gem;
 import org.xml.sax.Attributes;
@@ -6,7 +6,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
-class SAXGemHandler extends DefaultHandler {
+public class SAXGemHandler extends SAXHandler {
 
     private String lastElementName; // помечаем в каком элементе в данный момент мы находимся
 
@@ -17,7 +17,8 @@ class SAXGemHandler extends DefaultHandler {
     private byte numberOfFaces, transparency;
     private float value;
 
-    protected ArrayList<Gem> getGems() {
+    @Override
+    public ArrayList<Gem> getObjects(String pathToXMLFile) {
         return gems;
     }
 
