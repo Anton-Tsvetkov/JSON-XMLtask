@@ -6,6 +6,7 @@ import com.epam.laboratory.parsers.SAX.handlers.SAXHandler;
 import com.epam.laboratory.parsers.SAX.handlers.SAXWorldHandler;
 import org.apache.log4j.Logger;
 
+import javax.xml.parsers.SAXParserFactory;
 import java.util.ArrayList;
 
 public class SAXParser extends Parser {
@@ -15,7 +16,13 @@ public class SAXParser extends Parser {
 
     public ArrayList<?> parse(String pathToXMLFile, String objectType) {
         try {
-            return new ArrayList<>(returnHandlerByObjectType(objectType).getObjects(pathToXMLFile));
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            javax.xml.parsers.SAXParser parser = factory.newSAXParser();
+
+            SAXHandler handler = returnHandlerByObjectType(objectType);
+            parser.parse(pathToXMLFile, handler);
+            return new ArrayList<>(handler.getObjects(pathToXMLFile));
+
         } catch (Exception e) {
             LOGGER.error("No such found " + objectType + " object type");
         }
