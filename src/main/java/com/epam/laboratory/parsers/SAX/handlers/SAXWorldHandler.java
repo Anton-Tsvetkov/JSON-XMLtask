@@ -75,9 +75,7 @@ public class SAXWorldHandler extends SAXHandler {
             fillCountry();
             nullifyCountry();
         }
-
         localities.add(new Locality(index, type));
-
     }
 
 
@@ -91,18 +89,17 @@ public class SAXWorldHandler extends SAXHandler {
         population = 0;
         foundYear = 0;
 
+        index = 0;
+        type = "null";
+
         regions = new ArrayList<>();
         countriesBuffer = new ArrayList<>();
 
-        index = 0;
-        type = "null";
+        localities = new ArrayList<>();
     }
 
     private void fillRegion() {
-        regions.add(new Region(
-                regionName,
-                localities.get(0)));
-
+        regions.add(new Region(regionName, localities.get(localities.size() - 1)));
     }
 
     private void nullifyRegion() {

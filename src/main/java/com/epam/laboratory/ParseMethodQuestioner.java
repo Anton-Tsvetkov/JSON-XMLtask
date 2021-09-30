@@ -1,14 +1,11 @@
 package com.epam.laboratory;
 
 import com.epam.laboratory.XMLtask.ParseMethodCaller;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
 import java.util.Scanner;
 
 public class ParseMethodQuestioner {
 
-    public void askParseMethod() throws ParserConfigurationException, SAXException {
+    public void askParseMethod() {
 
         Scanner scanner = new Scanner(System.in);
 

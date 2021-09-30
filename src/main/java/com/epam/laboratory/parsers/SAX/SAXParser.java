@@ -34,8 +34,7 @@ public class SAXParser extends Parser {
     private SAXHandler returnHandlerByObjectType(String objectType) {
         if (objectType.contains("gem")) {
             return new SAXGemHandler();
-        } else //(objectType.contains("world"))
-        {
+        } else {
             return new SAXWorldHandler();
         }
     }

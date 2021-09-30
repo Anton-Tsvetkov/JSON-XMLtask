@@ -2,7 +2,6 @@ package com.epam.laboratory.parsers.SAX.handlers;
 
 import com.epam.laboratory.workObjects.gem.Gem;
 import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
