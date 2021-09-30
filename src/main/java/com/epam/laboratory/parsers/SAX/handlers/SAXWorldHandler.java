@@ -11,16 +11,18 @@ public class SAXWorldHandler extends SAXHandler {
 
     private String lastElementName; // помечаем в каком элементе в данный момент мы находимся
 
-    protected ArrayList<Country> countries = new ArrayList<>();
+    private ArrayList<Country> countries = new ArrayList<>();
+    private ArrayList<Country> countriesBuffer = new ArrayList<>();
+
     private ArrayList<Region> regions = new ArrayList<>();
     private ArrayList<Locality> localities = new ArrayList<>();
 
     private String countryName;
     private int population, foundYear;
 
-    private ArrayList<String> regionNames = new ArrayList<>();
-    private ArrayList<String> types = new ArrayList<>();
-    private ArrayList<Integer> indexes = new ArrayList<>();
+    private String regionName;
+    private String type;
+    private int index;
 
 
     @Override
@@ -32,8 +34,8 @@ public class SAXWorldHandler extends SAXHandler {
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) {
         lastElementName = qName;
         if (qName.equals("locality")) {
-            indexes.add(Integer.parseInt(atts.getValue("index")));
-            types.add(atts.getValue("type"));
+            index = Integer.parseInt(atts.getValue("index"));
+            type = atts.getValue("type");
         }
     }
 
@@ -41,10 +43,6 @@ public class SAXWorldHandler extends SAXHandler {
     public void characters(char[] ch, int start, int length) {
         String information = new String(ch, start, length);
         information = information.replaceAll("\n", "").trim();
-
-        for(int i = 0; i < 1; i++){
-            System.out.println(information);
-        }
 
         if (!information.isEmpty()) {
             switch (lastElementName) {
@@ -58,8 +56,7 @@ public class SAXWorldHandler extends SAXHandler {
                     foundYear = Integer.parseInt(information);
                     break;
                 case "regionName":
-                    regionNames.add(information);
-                    System.out.println("REGION: " + information);
+                    regionName = information;
                     break;
                 default:
                     System.out.println("No find \"" + information + "\" element");
@@ -69,37 +66,48 @@ public class SAXWorldHandler extends SAXHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-        if ((countryName != null &&!countryName.isEmpty()) &&
-                population != 0 &&
-                !regionNames.isEmpty() &&
-                !types.isEmpty() &&
-                foundYear != 0 &&
-                !indexes.isEmpty()) {
-            for (int i = 0; i < indexes.size(); i++) {
-                localities.add(new Locality(indexes.get(i), types.get(i)));
-            }
-            for (int i = 0; i < localities.size(); i++) {
-                regions.add(new Region(regionNames.get(i), localities.get(i)));
 
-            }
-            countries.add(new Country(countryName, population, foundYear, regions));
-
-            for(int i = 0; i < 1; i++){
-                System.out.println("!!!!!!!!!!!!!!!" + countryName);
-            }
-
-
-            countryName = null;
-            population = 0;
-            foundYear = 0;
-
-            localities = new ArrayList<>();
-            regions = new ArrayList<>();
-            countries = new ArrayList<>();
-
-            regionNames = new ArrayList<>();
-            indexes = new ArrayList<>();
-            types = new ArrayList<>();
+        if (qName.equals("region")) {
+            fillRegion();
+            nullifyRegion();
         }
+        if (qName.equals("country")) {
+            fillCountry();
+            nullifyCountry();
+        }
+
+        localities.add(new Locality(index, type));
+
     }
+
+
+    private void fillCountry() {
+        countriesBuffer.add(new Country(countryName, population, foundYear, regions));
+        countries.addAll(countriesBuffer);
+    }
+
+    private void nullifyCountry() {
+        countryName = "null";
+        population = 0;
+        foundYear = 0;
+
+        regions = new ArrayList<>();
+        countriesBuffer = new ArrayList<>();
+
+        index = 0;
+        type = "null";
+    }
+
+    private void fillRegion() {
+        regions.add(new Region(
+                regionName,
+                localities.get(0)));
+
+    }
+
+    private void nullifyRegion() {
+        regionName = "null";
+        localities = new ArrayList<>();
+    }
+
 }

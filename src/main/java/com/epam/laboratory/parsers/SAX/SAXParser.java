@@ -5,8 +5,11 @@ import com.epam.laboratory.parsers.SAX.handlers.SAXGemHandler;
 import com.epam.laboratory.parsers.SAX.handlers.SAXHandler;
 import com.epam.laboratory.parsers.SAX.handlers.SAXWorldHandler;
 import org.apache.log4j.Logger;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SAXParser extends Parser {
@@ -22,20 +25,18 @@ public class SAXParser extends Parser {
             SAXHandler handler = returnHandlerByObjectType(objectType);
             parser.parse(pathToXMLFile, handler);
             return new ArrayList<>(handler.getObjects(pathToXMLFile));
-
-        } catch (Exception e) {
-            LOGGER.error("No such found " + objectType + " object type");
+        } catch (ParserConfigurationException | SAXException | IOException exception) {
+            LOGGER.error(exception.getMessage());
         }
         return new ArrayList<>();
     }
 
-    private SAXHandler returnHandlerByObjectType(String objectType) throws Exception {
+    private SAXHandler returnHandlerByObjectType(String objectType) {
         if (objectType.contains("gem")) {
             return new SAXGemHandler();
-        } else if (objectType.contains("world")) {
+        } else //(objectType.contains("world"))
+        {
             return new SAXWorldHandler();
-        } else {
-            throw new Exception("No such found " + objectType + " object type");
         }
     }
 
